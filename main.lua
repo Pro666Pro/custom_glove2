@@ -2,7 +2,23 @@ fireclickdetector(workspace.Lobby["Diamond"].ClickDetector)
 wait(0.5)
 game.ReplicatedStorage.Rockmode:FireServer()
 wait(0.5)
-fireclickdetector(workspace.Lobby["Titan"].ClickDetector)
+for i, v in pairs(game:GetService("ReplicatedStorage")._NETWORK:GetChildren()) do
+  
+	    if v.Name:find("{") then
+	        local args = {
+	            [1] = "Titan"
+	        }
+	
+	        if v:IsA("RemoteEvent") then
+	            v:FireServer(unpack(args))
+	        elseif v:IsA("RemoteFunction") then
+	            local result = v:InvokeServer(unpack(args))
+	            print("Result from InvokeServer:", result)
+	        else
+	            print("v is neither a RemoteEvent nor a RemoteFunction.")
+	        end
+	    end
+	end
 wait(0.5)
 game.ReplicatedStorage.TitanEvent:FireServer()
 wait(0.5)
