@@ -20,7 +20,7 @@ for i, v in pairs(game:GetService("ReplicatedStorage")._NETWORK:GetChildren()) d
 	    end
 	end
 wait(10)
-game.ReplicatedStorage.TitanEvent:FireServer()
+game:GetService("VirtualInputManager"):SendKeyEvent(true,"E",false,x)
 wait(0.5)
 fireclickdetector(workspace.Lobby["Diamond"].ClickDetector)
 wait(0.5)
